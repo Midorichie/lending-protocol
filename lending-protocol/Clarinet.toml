@@ -1,0 +1,48 @@
+[project]
+name = "bitcoin-lending-protocol"
+description = "A lending protocol enabling Bitcoin-collateralized loans on Stacks"
+authors = []
+telemetry = false
+cache_dir = "./.cache"
+
+[contracts.lending-protocol]
+path = "contracts/lending-protocol.clar"
+clarity_version = 2
+epoch = 2.4
+
+[contracts.oracle-interface]
+path = "contracts/oracle-interface.clar"
+clarity_version = 2
+epoch = 2.4
+
+[repl.analysis]
+passes = ["check_checker"]
+
+[repl.analysis.check_checker]
+strict = true
+trusted_sender = false
+trusted_caller = false
+callee_filter = false
+
+[project.requirements]
+[project.requirements.sip-010-trait-ft-standard]
+contract_id = "SP3FBR2AGK5H9QBDH3EEN6DF8EK8JY7RX8QJ5SVTE.sip-010-trait-ft-standard"
+
+[development]
+cost_voting_period = 100
+
+# Development plan constants
+[development.plan]
+batches = []
+
+# Deployment settings
+[[development.deployments]]
+id = 1
+name = "main"
+network = "devnet"
+genesis-blockhash = "0x00"
+genesis-timestamp = 0
+genesis-url = "http://localhost:20443"
+stacks-node-url = "http://localhost:20443"
+bitcoind-url = "http://localhost:18443"
+miner-address = "ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM"
